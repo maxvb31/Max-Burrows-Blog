@@ -36,9 +36,11 @@ const { post } = Astro.props;
 	<body>
 		<main>
       <h1>{post.title}</h1>
-      <h2><a href="index.astro">Home</a></h2>
+      <h2><a href="./frontend/digital-disk/src/pages/index.astro">Home</a></h2>
       <img class="main-image" src={urlForImage(post.mainImage).url()} />
       <PortableText portableText={post.body} />
     </main>
 	</body>
 </html>
+
+
