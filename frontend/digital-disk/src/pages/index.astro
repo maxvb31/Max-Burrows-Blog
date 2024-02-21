@@ -1,8 +1,9 @@
 ---
-import {getAllPosts} from '../sanity/api.js';
+import { getAllPosts } from '../sanity/api.js';
 import { urlForImage } from '../sanity/urlForImage.js';
 
-const posts = await getAllPosts();
+const featuredPosts = await getAllPosts(true);
+const allPosts = await getAllPosts();
 ---
 
 <html lang="en">
@@ -40,18 +41,33 @@ const posts = await getAllPosts();
     </style>
 	</head>
 	<body>
-		<main>
-      <h1>Posts</h1>
-      <ul>
-        {posts.map(post => (
-          <li>
-            <a href={`/posts/${post.slug.current}`}>
-            <img src={urlForImage(post.mainImage).url()} width="300px" />
-            {post.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <main>
+      <section>
+        <h2>Featured Posts</h2>
+        <ul>
+          {featuredPosts.map(post => (
+            <li>
+              <a href={`/posts/${post.slug.current}`}>
+                <img src={urlForImage(post.mainImage).url()} width="300px" />
+                {post.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h2>All Posts</h2>
+        <ul>
+          {allPosts.map(post => (
+            <li>
+              <a href={`/posts/${post.slug.current}`}>
+                <img src={urlForImage(post.mainImage).url()} width="300px" />
+                {post.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
 	</body>
 </html>
