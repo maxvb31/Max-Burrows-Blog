@@ -1,0 +1,4 @@
+[build]
+  base = "frontend/digital-disk"
+  command = "npx astro build"
+  publish = "dist"
