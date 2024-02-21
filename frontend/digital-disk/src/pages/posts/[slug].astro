@@ -36,10 +36,21 @@ const { post } = Astro.props;
 	<body>
 		<main>
       <h1>{post.title}</h1>
-      <h2><a href="./frontend/digital-disk/src/pages/index.astro">Home</a></h2>
+      <h2><a href="#" id="goBackLink">Go Back</a></h2>
       <img class="main-image" src={urlForImage(post.mainImage).url()} />
       <PortableText portableText={post.body} />
     </main>
+
+
+    <script>
+        // Add event listener to the anchor tag
+        document.getElementById('goBackLink').addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent the default link behavior
+    
+          // Go back in the browser's history
+          window.history.back();
+        });
+      </script>
 	</body>
 </html>
 
