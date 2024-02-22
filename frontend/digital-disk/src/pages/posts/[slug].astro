@@ -2,6 +2,7 @@
 import { getAllPosts } from "../../sanity/api";
 import { urlForImage } from '../../sanity/urlForImage.js';
 import PortableText from '../../components/portableText.astro';
+import { getFormattedDate } from '../../sanity/postDate.js'; 
 
 export async function getStaticPaths() {
   const allBlogPosts = await getAllPosts();
@@ -45,6 +46,7 @@ const { post } = Astro.props;
 	<body>
 		<main>
       <h1>{post.title}</h1>
+      <p class="post-date">Published on: {getFormattedDate(post.publishedAt)}</p>
       <h2><a href="#" id="goBackLink">Go Back</a></h2>
       <img class="main-image" src={urlForImage(post.mainImage).url()} />
       <div class="container">
