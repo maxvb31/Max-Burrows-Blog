@@ -11,6 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const allPosts = await getAllPosts();
 ---
 
 <html lang="en">
@@ -36,6 +37,23 @@ const { post } = Astro.props;
         margin: 0 auto;
         padding: 20px 0px;
       }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+      }
+      ul li a {
+        text-decoration: underline;
+        color: inherit;
+      }
+      ul li a:hover {
+        text-decoration: underline;
+      }
       @media (max-width: 900px) {
         .container {
           padding: 20px 18px; 
@@ -52,6 +70,23 @@ const { post } = Astro.props;
       <div class="container">
       <PortableText portableText={post.body} />
       </div>
+
+      <h2>Read More</h2>
+      <ul class="all-posts">
+        {allPosts.map(post => (
+          <li>
+            <a href={`/posts/${post.slug.current}`}>
+              <div class="image-container"> <!-- Add image container -->
+              </div>
+              <div>
+                <a href={`/posts/${post.slug.current}`}>
+                  {post.title}
+                </a>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
     </main>
 
 
