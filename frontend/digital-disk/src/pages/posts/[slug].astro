@@ -30,7 +30,16 @@ const { post } = Astro.props;
       .main-image {
         width: 100%;
       }
-     
+      .container{
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px 0px;
+      }
+      @media (max-width: 900px) {
+        .container {
+          padding: 20px 30px; /* Ensure the featured image doesn't overflow */
+        }}
+
     </style>
 	</head>
 	<body>
@@ -38,7 +47,9 @@ const { post } = Astro.props;
       <h1>{post.title}</h1>
       <h2><a href="#" id="goBackLink">Go Back</a></h2>
       <img class="main-image" src={urlForImage(post.mainImage).url()} />
+      <div class="container">
       <PortableText portableText={post.body} />
+      </div>
     </main>
 
 

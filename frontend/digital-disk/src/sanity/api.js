@@ -9,3 +9,4 @@ export async function getAllPosts(featured = false) {
   const posts = await client.fetch(query);
   return posts;
 }
+
