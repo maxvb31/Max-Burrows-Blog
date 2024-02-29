@@ -1,0 +1,24 @@
+---
+import { getAllPortfolioImages } from '../sanity/api'; // Import the function to fetch portfolio images
+import { PortfolioImage } from '../components/portfolioImage.astro';
+
+const allPortfolioImages = await getAllPortfolioImages(); // Fetch all portfolio images
+---
+
+<html lang="en">
+  <head>
+    <!-- Head content -->
+  </head>
+  <body>
+    <main>
+      <!-- Other content of your about page -->
+      
+      <h2>Portfolio</h2>
+      <div class="portfolio-images">
+        {allPortfolioImages.map(image => (
+          <PortfolioImage key={image._id} image={image} />
+        ))}
+      </div>
+    </main>
+  </body>
+</html>

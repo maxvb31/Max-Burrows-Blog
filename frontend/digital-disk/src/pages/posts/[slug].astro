@@ -65,7 +65,7 @@ const allPosts = await getAllPosts();
     <main>
       <h1>{post.title}</h1>
       <p class="post-date">Published on: {getFormattedDate(post.publishedAt)}</p>
-      <h2><a href="#" id="goBackLink">Go Back</a></h2>
+      <h2><a href="/">Go Back</a></h2>
       <img class="main-image" src={urlForImage(post.mainImage).url()} />
       <div class="container">
         <PortableText portableText={post.body} />
