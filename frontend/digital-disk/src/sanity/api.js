@@ -10,3 +10,12 @@ export async function getAllPosts(featured = false) {
   return posts;
 }
 
+export async function getAllPhotos(featured = false) {
+  const client = useSanityClient();
+  let query = '*[_type == "photo"]';
+  if (featured) {
+    query += '[featured == true]';
+  }
+  const photos = await client.fetch(query);
+  return photos;
+}

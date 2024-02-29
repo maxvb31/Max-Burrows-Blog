@@ -1,9 +1,10 @@
 ---
 import { getAllPosts } from '../sanity/api.js';
+import { getAllPhotos } from '../sanity/api.js';
 import { urlForImage } from '../sanity/urlForImage.js';
 
-const featuredPosts = await getAllPosts(true);
-const allPosts = await getAllPosts();
+const featuredPhotos = await getAllPhotos(true);
+const allPhotos = await getAllPhotos();
 ---
 
 <html lang="en">
@@ -113,48 +114,19 @@ const allPosts = await getAllPosts();
 	</head>
 	<body>
     <main>
-      <a href="/portfolio">portfolio</a>
       <section>
-        <h2 class="section-headers">Featured Posts</h2>
-        <ul>
-          {featuredPosts.map(post => (
-            <li>
-              <a href={`/posts/${post.slug.current}`}>
-                <div class="image-container">
-                  <img
-                    src={urlForImage(post.mainImage).url()}
-                    class="featured-post-image"
-                  />
-                  <div class="overlay"></div> <!-- Overlay -->
-                </div>
-              </a>
-              <div>
-                <a href={`/posts/${post.slug.current}`}>
-                  {post.title}
-                </a>
-              </div>
-            </li>
-          ))}
-        </ul>
         <section class="all-posts-section">
-          <h2 class="section-headers">All Posts</h2>
+            <a href="/">Go to Home</a>
+          <h2 class="section-headers">My Work</h2>
           <ul class="all-posts">
-            {allPosts.map(post => (
+            {allPhotos.map(post => (
               <li>
-                <a href={`/posts/${post.slug.current}`}>
                   <div class="image-container"> <!-- Add image container -->
                     <img
                       src={urlForImage(post.mainImage).url()}
                       class="all-posts-image" 
                     />
-                    <div class="overlay"></div> <!-- Overlay -->
                   </div>
-                  <div>
-                    <a href={`/posts/${post.slug.current}`}>
-                      {post.title}
-                    </a>
-                  </div>
-                </a>
               </li>
             ))}
           </ul>
