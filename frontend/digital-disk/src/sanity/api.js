@@ -10,10 +10,3 @@ export async function getAllPosts(featured = false) {
   return posts;
 }
 
-export async function getAllPortfolioImages() {
-  const client = useSanityClient();
-  const query = '*[_type == "portfolioImage"]'; // Adjust the query as per your schema
-
-  const images = await client.fetch(query);
-  return images;
-}
